@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProgramPreivwSetupDlg</class>
+ <widget class="QDialog" name="ProgramPreivwSetupDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>312</width>
+    <height>233</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>程序预览配置</string>
+  </property>
+  <widget class="QPushButton" name="GenerateProgramPreview">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>11</y>
+     <width>290</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>生成程序预览</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>100</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>系统选择：</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="ReadyInPoint">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>93</y>
+     <width>127</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>辅助进入点</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="ReadyOutPoint">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>127</y>
+     <width>127</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>辅助脱离点</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="BeginInPlace">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>161</y>
+     <width>191</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>起点运动到位等待</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="EndInPlace">
+   <property name="geometry">
+    <rect>
+     <x>11</x>
+     <y>195</y>
+     <width>181</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>终点运动到位等待</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="ContronSystemList">
+   <property name="geometry">
+    <rect>
+     <x>125</x>
+     <y>60</y>
+     <width>181</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

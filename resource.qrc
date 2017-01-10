@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>Icon/2D.JPG</file>
+        <file>Icon/3D.JPG</file>
+        <file>Icon/dxf.ico</file>
+    </qresource>
+</RCC>

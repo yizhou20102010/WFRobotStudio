@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>944</width>
+    <height>948</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="MyOpenGLWidget2D" name="OpenGL2D"/>
+      </item>
+      <item>
+       <widget class="MyOpenGLWidget3D" name="OpenGL3D"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>944</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="File">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <widget class="QMenu" name="Import">
+     <property name="title">
+      <string>导入...</string>
+     </property>
+     <addaction name="action_Import_Dxf"/>
+    </widget>
+    <addaction name="OpenFile_2D"/>
+    <addaction name="OpenFile_3D"/>
+    <addaction name="Import"/>
+   </widget>
+   <widget class="QMenu" name="View">
+    <property name="title">
+     <string>视图(&amp;V)</string>
+    </property>
+    <widget class="QMenu" name="View3D">
+     <property name="title">
+      <string>3D视图</string>
+     </property>
+     <addaction name="FrontView"/>
+     <addaction name="BackView"/>
+     <addaction name="LeftView"/>
+     <addaction name="RightView"/>
+     <addaction name="UpView"/>
+     <addaction name="BottomView"/>
+    </widget>
+    <addaction name="ShowDimension"/>
+    <addaction name="separator"/>
+    <addaction name="DefaultView"/>
+    <addaction name="View3D"/>
+    <addaction name="separator"/>
+    <addaction name="ProjectProperty"/>
+    <addaction name="action_MotionPara"/>
+    <addaction name="action_ProgramPreview"/>
+   </widget>
+   <widget class="QMenu" name="Generate">
+    <property name="title">
+     <string>生成(&amp;G)</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="PathsOperator">
+    <property name="title">
+     <string>轨迹(&amp;P)</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>添加辅助点</string>
+     </property>
+     <addaction name="action_AddInPoint"/>
+     <addaction name="action_AddOutPoint"/>
+    </widget>
+    <widget class="QMenu" name="menu_3">
+     <property name="title">
+      <string>程序预览</string>
+     </property>
+     <addaction name="action_KEBAProjectPreView"/>
+    </widget>
+    <addaction name="PathSplitting"/>
+    <addaction name="PathsMerging"/>
+    <addaction name="PathChangeDirection"/>
+    <addaction name="separator"/>
+    <addaction name="PathBPChange"/>
+    <addaction name="PathUniformPosture"/>
+    <addaction name="separator"/>
+    <addaction name="menu"/>
+    <addaction name="separator"/>
+    <addaction name="menu_3"/>
+   </widget>
+   <widget class="QMenu" name="Help">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+    <addaction name="action_About"/>
+   </widget>
+   <addaction name="File"/>
+   <addaction name="View"/>
+   <addaction name="Generate"/>
+   <addaction name="PathsOperator"/>
+   <addaction name="Help"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_Import_Dxf"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="PathsInfo">
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>项目属性</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="QTreeView" name="PathsTreeView">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QtTreePropertyBrowser" name="PointsProperty">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QtTreePropertyBrowser" name="PathsProperty">
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
+         <property name="indentation">
+          <number>25</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="MotionPara">
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>动态信息</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QComboBox" name="MotionParaType"/>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QTreeWidget" name="MotionInfoList">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QtTreePropertyBrowser" name="MotionInfoTreeProperty"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="ProgramsPreview">
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>程序预览</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <widget class="QComboBox" name="ProgramsNameList">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="ProgramNameTip">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableView" name="OneProgramContents">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="showGrid">
+          <bool>true</bool>
+         </property>
+         <property name="gridStyle">
+          <enum>Qt::SolidLine</enum>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SaveProgramProject">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>保存程序项目</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="ShowDimension">
+   <property name="text">
+    <string>2D/3D 切换</string>
+   </property>
+  </action>
+  <action name="OpenFile_2D">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icon/Icon/2D.JPG</normaloff>:/icon/Icon/2D.JPG</iconset>
+   </property>
+   <property name="text">
+    <string>打开2D项目</string>
+   </property>
+  </action>
+  <action name="OpenFile_3D">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icon/Icon/3D.JPG</normaloff>:/icon/Icon/3D.JPG</iconset>
+   </property>
+   <property name="text">
+    <string>打开3D项目</string>
+   </property>
+  </action>
+  <action name="DefaultView">
+   <property name="text">
+    <string>默认视图</string>
+   </property>
+  </action>
+  <action name="FrontView">
+   <property name="text">
+    <string>前视图</string>
+   </property>
+  </action>
+  <action name="BackView">
+   <property name="text">
+    <string>后视图</string>
+   </property>
+  </action>
+  <action name="LeftView">
+   <property name="text">
+    <string>左视图</string>
+   </property>
+  </action>
+  <action name="RightView">
+   <property name="text">
+    <string>右视图</string>
+   </property>
+  </action>
+  <action name="UpView">
+   <property name="text">
+    <string>上视图</string>
+   </property>
+  </action>
+  <action name="BottomView">
+   <property name="text">
+    <string>下视图</string>
+   </property>
+  </action>
+  <action name="ProjectProperty">
+   <property name="text">
+    <string>项目属性</string>
+   </property>
+  </action>
+  <action name="KEBAProject">
+   <property name="text">
+    <string>keba项目</string>
+   </property>
+  </action>
+  <action name="PathSplitting">
+   <property name="text">
+    <string>轨迹拆分</string>
+   </property>
+  </action>
+  <action name="PathsMerging">
+   <property name="text">
+    <string>轨迹合并</string>
+   </property>
+  </action>
+  <action name="PathChangeDirection">
+   <property name="text">
+    <string>轨迹换向</string>
+   </property>
+  </action>
+  <action name="PathBPChange">
+   <property name="text">
+    <string>起点选择</string>
+   </property>
+  </action>
+  <action name="PathUniformPosture">
+   <property name="text">
+    <string>统一姿态</string>
+   </property>
+  </action>
+  <action name="action_MotionPara">
+   <property name="text">
+    <string>动态参数</string>
+   </property>
+  </action>
+  <action name="action_NewDynPara">
+   <property name="text">
+    <string>新建Dyn参数</string>
+   </property>
+   <property name="toolTip">
+    <string>新建Dyn参数</string>
+   </property>
+  </action>
+  <action name="action_DeleteDynPara">
+   <property name="text">
+    <string>删除Dyn参数</string>
+   </property>
+   <property name="toolTip">
+    <string>删除Dyn参数</string>
+   </property>
+  </action>
+  <action name="action_DeleteOvlPara">
+   <property name="text">
+    <string>删除Ovl参数</string>
+   </property>
+   <property name="toolTip">
+    <string>删除Ovl参数</string>
+   </property>
+  </action>
+  <action name="action_Import_Dxf">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icon/Icon/dxf.ico</normaloff>:/icon/Icon/dxf.ico</iconset>
+   </property>
+   <property name="text">
+    <string>导入Dxf文件</string>
+   </property>
+  </action>
+  <action name="action_AddInPoint">
+   <property name="text">
+    <string>添加进入点…</string>
+   </property>
+  </action>
+  <action name="action_AddOutPoint">
+   <property name="text">
+    <string>添加脱离点…</string>
+   </property>
+  </action>
+  <action name="action_DeleteCurInAP">
+   <property name="text">
+    <string>删除当前进入点</string>
+   </property>
+   <property name="toolTip">
+    <string>删除当前路径的当前进入点</string>
+   </property>
+  </action>
+  <action name="action_DeleteCurOutAP">
+   <property name="text">
+    <string>删除当前脱离点</string>
+   </property>
+   <property name="toolTip">
+    <string>删除当前路径的当前脱离点</string>
+   </property>
+  </action>
+  <action name="action_DeleteAllOutAPs">
+   <property name="text">
+    <string>删除所有脱离点</string>
+   </property>
+   <property name="toolTip">
+    <string>删除所有路径的脱离点</string>
+   </property>
+  </action>
+  <action name="action_DeleteAllInAPs">
+   <property name="text">
+    <string>删除所有进入点</string>
+   </property>
+   <property name="toolTip">
+    <string>删除所有路径的进入点</string>
+   </property>
+  </action>
+  <action name="action_KEBAProjectPreView">
+   <property name="text">
+    <string>KEBA系统</string>
+   </property>
+  </action>
+  <action name="action_ProgramPreview">
+   <property name="text">
+    <string>程序预览</string>
+   </property>
+  </action>
+  <action name="action_NewOvlABSPara">
+   <property name="text">
+    <string>新建OvlABS参数</string>
+   </property>
+   <property name="toolTip">
+    <string>新建OvlABS参数</string>
+   </property>
+  </action>
+  <action name="action_NewOvlRELPara">
+   <property name="text">
+    <string>新建OvlREL参数</string>
+   </property>
+   <property name="toolTip">
+    <string>新建OvlREL参数</string>
+   </property>
+  </action>
+  <action name="action_NewOvlSupposPara">
+   <property name="text">
+    <string>新建OvlSuppos参数</string>
+   </property>
+   <property name="toolTip">
+    <string>新建OvlSuppos参数</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>关于…</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QtTreePropertyBrowser</class>
+   <extends>QWidget</extends>
+   <header>qttreepropertybrowser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MyOpenGLWidget2D</class>
+   <extends>QOpenGLWidget</extends>
+   <header>myopenglwidget2d.h</header>
+   <slots>
+    <slot>LoadDefaultView()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>MyOpenGLWidget3D</class>
+   <extends>QOpenGLWidget</extends>
+   <header>myopenglwidget3d.h</header>
+   <slots>
+    <slot>LoadDefaultView()</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <signal>loaddefaultview2D()</signal>
+  <signal>loaddefaultview3D()</signal>
+ </slots>
+</ui>
